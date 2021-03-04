@@ -1,0 +1,40 @@
+﻿@model projectKeonWooPark1831319.Models.DetailSaleInformation
+
+@{
+    ViewBag.Title = "User Profile";
+}
+
+@if (Session["userId"] == null)
+{
+    <h2>Please login to access this page</h2>
+    @Html.ActionLink("Click to go to Login page", "Index", "User");
+}
+else
+{
+    <h2>List of Cars you registered</h2>
+    <table class="table">
+        <tr>
+            <th>Sale Id</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+        @for (int i = 0; i < Model.Sales.Count; i++)
+        {
+            <tr>
+                <td>@Model.Sales[i].Id</td>
+                <td>@Model.Brands[i].Name</td>
+                <td>@Model.Models[i].Name</td>
+                <td>$@Model.Sales[i].Price</td>
+            </tr>
+        }
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Register a new car to sell", "SellCar")
+</div>
+
+<div>
+    @Html.ActionLink("Back to previous page", "Index")
+</div>

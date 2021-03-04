@@ -1,0 +1,36 @@
+﻿@model IEnumerable<projectKeonWooPark1831319.Models.CarModel>
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<h2>Registered Models</h2>
+
+@using(@Html.BeginForm("ModelDetail", "ControlPanel", FormMethod.Get))
+{
+    @Html.DropDownList("Brand", ViewBag.Brands as SelectList, "--Select Brand--", new { onchange = @"form.submit();" })
+}
+<hr />
+<table class="table" style="width: 70%;">
+    <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var mod in Model)
+    {
+        <tr>
+            <td>@mod.Name</td>
+            <td><button class="btn btn-default">@Html.ActionLink("Update", "EditModel", new { @id = mod.Id, @style = "color:#111111;" })</button></td>
+            <td>
+                @using(Html.BeginForm("DeleteModel", "ControlPanel", new { @id = mod.Id}))
+                {
+                    <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete @mod.Name.Trim()?');" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Back to Control Panel", "Index")
+</p>

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Sale";
+}
+
+@if (Session["userId"] == null)
+{
+    <h2>Please login to access this page</h2>
+    @Html.ActionLink("Click to go to Login page", "Index", "User");
+}
+else
+{
+    <h2>Sell your car!</h2>
+
+    <button class="btn btn-default">@Html.ActionLink("Register a new car to sell", "SellCar")</button>
+
+    <hr />
+
+    <button class="btn btn-default">@Html.ActionLink("See your profile", "UserProfile", new { @id = Convert.ToInt32(Session["userId"]) })</button>
+}
+

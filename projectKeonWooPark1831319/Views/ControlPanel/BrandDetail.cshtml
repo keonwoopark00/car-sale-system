@@ -1,0 +1,25 @@
+﻿@model IEnumerable<projectKeonWooPark1831319.Models.Brand>
+
+@{
+    ViewBag.Title = "Brands";
+}
+
+<h2>Registered Brands</h2>
+
+<table class="table" style="width: 60%;">
+    @foreach (var brand in Model)
+    {
+    <tr>
+        <td>@brand.Name</td>
+        <td><button class="btn btn-default">@Html.ActionLink("Update", "EditBrand", new { @id = brand.Id })</button></td>
+        <td>
+            @using (Html.BeginForm("DeleteBrand", "ControlPanel", new { @id = brand.Id }))
+            {
+                <input type="submit" value="Delete" onclick="return confirm('Do you really want to delete @brand.Name.Trim()?');" />
+            }
+        </td>
+    </tr>
+    }
+</table>
+
+@Html.ActionLink("Back to Control Panel", "Index")

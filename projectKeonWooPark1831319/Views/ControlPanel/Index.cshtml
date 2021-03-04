@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Control Panel</h1>
+
+<h3>Brand</h3>
+<button class="btn-primary">@Html.ActionLink("Register a new brand", "CreateBrand", null, new { @style = "color:#ffffff;" })</button>
+<button class="btn-default">@Html.ActionLink("See all brands", "BrandDetail")</button>
+
+<hr />
+
+<h3>Model</h3>
+<button class="btn-primary">@Html.ActionLink("Register a new model", "CreateModel", null, new { @style = "color:#ffffff;" })</button>
+<button class="btn-default">@Html.ActionLink("See all models", "ModelDetail")</button>
